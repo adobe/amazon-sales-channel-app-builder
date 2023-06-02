@@ -1,0 +1,8 @@
+{
+  "name": "amazon-sales-channel",
+  "displayName": "Amazon Sales Channel",
+  "description": "Amazon Sales Channel for App Builder",
+  "platform": "web",
+  "id": "amazon-sales-channel",
+  "version": "1.0.0"
+}

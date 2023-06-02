@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "moduleResolution": "node"
+  },
+  "include": ["**/*", "../types/**/*", "../actions-src/**/*"]
+}

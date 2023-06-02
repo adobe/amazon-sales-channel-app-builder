@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "types": ["node"],
+    "outDir": "actions",
+    "moduleResolution": "node",
+    "paths": {
+      "@adobe/aio-lib-files": ["./types/adobe/files.d.ts"]
+    }
+  },
+  "exclude": ["./test"],
+  "include": ["./actions-src", "./types"]
+}

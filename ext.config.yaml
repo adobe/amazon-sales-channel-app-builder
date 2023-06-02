@@ -1,0 +1,353 @@
+operations:
+  view:
+    - type: web
+      impl: index.html
+actions: actions
+web: web-src
+runtimeManifest:
+  packages:
+    amazon-app:
+      license: Apache-2.0
+      actions:
+        catalog-product-save-after-listener:
+          function: actions/commerce/product/runtime/listener/updateProduct.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+            COMMERCE_BASE_URL: $COMMERCE_BASE_URL
+            COMMERCE_CONSUMER_KEY: $COMMERCE_CONSUMER_KEY
+            COMMERCE_CONSUMER_SECRET: $COMMERCE_CONSUMER_SECRET
+            COMMERCE_ACCESS_TOKEN: $COMMERCE_ACCESS_TOKEN
+            COMMERCE_ACCESS_TOKEN_SECRET: $COMMERCE_ACCESS_TOKEN_SECRET
+          annotations:
+            require-adobe-auth: true
+            final: true
+        api-get-listing-changes:
+          function: actions/api/audit/runtime/getListingChanges.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-get-communication-error-logs:
+          function: actions/api/audit/runtime/getCommunicationErrorLogs.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-count-products:
+          function: actions/api/product/runtime/countProducts.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-get-product:
+          function: actions/api/product/runtime/getProduct.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-get-products:
+          function: actions/api/product/runtime/getProducts.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-update-product-attributes:
+          function: actions/api/product/runtime/updateProductsByAttributes.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            COMMERCE_BASE_URL: $COMMERCE_BASE_URL
+            COMMERCE_CONSUMER_KEY: $COMMERCE_CONSUMER_KEY
+            COMMERCE_CONSUMER_SECRET: $COMMERCE_CONSUMER_SECRET
+            COMMERCE_ACCESS_TOKEN: $COMMERCE_ACCESS_TOKEN
+            COMMERCE_ACCESS_TOKEN_SECRET: $COMMERCE_ACCESS_TOKEN_SECRET
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-add-products:
+          function: actions/api/product/runtime/addProducts.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          limits:
+            timeout: 600000
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        scheduled-amazon-sync-orders:
+          function: actions/amazon/order/runtime/scheduled/syncOrders.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          limits:
+            timeout: 600000
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+            COMMERCE_BASE_URL: $COMMERCE_BASE_URL
+            COMMERCE_CONSUMER_KEY: $COMMERCE_CONSUMER_KEY
+            COMMERCE_CONSUMER_SECRET: $COMMERCE_CONSUMER_SECRET
+            COMMERCE_ACCESS_TOKEN: $COMMERCE_ACCESS_TOKEN
+            COMMERCE_ACCESS_TOKEN_SECRET: $COMMERCE_ACCESS_TOKEN_SECRET
+          annotations:
+            require-adobe-auth: false
+            final: true
+        get-listing-offers-batch:
+          function: actions/amazon/reports/runtime/getListingOffers.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+            AUTO_REQUEST_THROTTLED: false
+          annotations:
+            require-adobe-auth: false
+            final: true
+        get-competitive-prices-batch:
+          function: actions/amazon/reports/runtime/listCompetitivePrices.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+            AUTO_REQUEST_THROTTLED: false
+          annotations:
+            require-adobe-auth: false
+            final: true
+        commerce-get-rest:
+          function: actions/commerce/runtime/getRest.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            COMMERCE_BASE_URL: $COMMERCE_BASE_URL
+            COMMERCE_CONSUMER_KEY: $COMMERCE_CONSUMER_KEY
+            COMMERCE_CONSUMER_SECRET: $COMMERCE_CONSUMER_SECRET
+            COMMERCE_ACCESS_TOKEN: $COMMERCE_ACCESS_TOKEN
+            COMMERCE_ACCESS_TOKEN_SECRET: $COMMERCE_ACCESS_TOKEN_SECRET
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-store-credentials:
+          function: actions/api/account/runtime/storeCredentials.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-get-credentials:
+          function: actions/api/account/runtime/getCredentials.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-migrate-account:
+          function: actions/api/account/runtime/migrateAccount.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          limits:
+            timeout: 600000
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-get-listing-improvements:
+          function: actions/api/reports/runtime/getListingImprovements.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-add-account:
+          function: actions/api/account/runtime/addAccount.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-validate-account:
+          function: actions/api/account/runtime/validateAccount.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-get-accounts:
+          function: actions/api/account/runtime/getAccounts.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        amazon-get-products:
+          function: actions/amazon/product/runtime/listProducts.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+          annotations:
+            require-adobe-auth: false
+            final: true
+        amazon-get-orders:
+          function: actions/amazon/order/runtime/listOrders.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-get-attributes:
+          function: actions/api/product/runtime/getAttributes.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-delete-account:
+          function: actions/api/account/runtime/deleteAccount.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        amazon-get-sales:
+          function: actions/amazon/sales/runtime/getOrderMetrics.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+          annotations:
+            require-adobe-auth: false
+            final: true
+        scheduled-amazon-sync-listing-improvements:
+          function: actions/amazon/reports/runtime/scheduled/syncListingImprovements.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          limits:
+            timeout: 600000
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+          annotations:
+            require-adobe-auth: false
+            final: true
+        scheduled-amazon-sync-products:
+          function: actions/amazon/product/runtime/scheduled/syncProducts.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          limits:
+            timeout: 600000
+          inputs:
+            LOG_LEVEL: debug
+            ENCRYPTION_KEY: $ENCRYPTION_KEY
+            ENCRYPTION_IV: $ENCRYPTION_IV
+            COMMERCE_BASE_URL: $COMMERCE_BASE_URL
+            COMMERCE_CONSUMER_KEY: $COMMERCE_CONSUMER_KEY
+            COMMERCE_CONSUMER_SECRET: $COMMERCE_CONSUMER_SECRET
+            COMMERCE_ACCESS_TOKEN: $COMMERCE_ACCESS_TOKEN
+            COMMERCE_ACCESS_TOKEN_SECRET: $COMMERCE_ACCESS_TOKEN_SECRET
+          annotations:
+            require-adobe-auth: false
+            final: true
+        add-attribute-mapping:
+          function: actions/api/attribute/runtime/addMapping.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-get-cache:
+          function: actions/api/cache/runtime/getWithExpiry.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+        api-set-cache:
+          function: actions/api/cache/runtime/setWithExpiry.js
+          web: 'yes'
+          runtime: 'nodejs:16'
+          inputs:
+            LOG_LEVEL: debug
+          annotations:
+            require-adobe-auth: false
+            final: true
+      # Alarms do not work locally
+      triggers:
+        everyThreeMin:
+          feed: /whisk.system/alarms/interval
+          inputs:
+            minutes: 3
+        everyTenMin:
+          feed: /whisk.system/alarms/interval
+          inputs:
+            minutes: 10
+      rules:
+        syncOrdersEveryTenMin:
+          trigger: everyTenMin
+          action: scheduled-amazon-sync-orders
+        syncAmazonProductsEveryTenMin:
+          trigger: everyThreeMin
+          action: scheduled-amazon-sync-products
+        syncListingImprovementsEveryTenMin:
+          trigger: everyTenMin
+          action: scheduled-amazon-sync-listing-improvements
