@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "moduleResolution": "node",
+    "paths": {
+      "@adobe/aio-lib-files": ["./types/adobe/files.d.ts"]
+    }
+  },
+  "include": ["**/*", "../../types/**/*", "../../actions-src/**/*"]
+}

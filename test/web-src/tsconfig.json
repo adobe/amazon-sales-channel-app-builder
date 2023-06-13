@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "jsx": "react",
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "types": ["jest", "@testing-library/jest-dom"],
+    "moduleResolution": "nodenext"
+  },
+  "include": ["**/*", "../../types/**/*", "../../web-src/**/*"]
+}

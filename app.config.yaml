@@ -1,0 +1,4 @@
+extensions:
+  commerce/backend-ui/1:
+    $include: ext.config.yaml
+

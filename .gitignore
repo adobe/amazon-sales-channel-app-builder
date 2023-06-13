@@ -1,0 +1,48 @@
+# Package directories
+node_modules
+jspm_packages
+
+# Build
+build
+dist
+.manifest-dist.yml
+
+# Config
+config.json
+.env*
+!.env.dist
+.aio
+
+# Adobe I/O console config
+console.json
+
+# Test output
+junit.xml
+
+# IDE & Temp
+.cache
+.idea
+.nyc_output
+.vscode
+coverage
+.aws.tmp.creds.json
+.wskdebug.props.tmp
+
+# Parcel
+.parcel-cache
+
+# OSX
+.DS_Store
+
+# Yeoman
+.yo-repository
+
+# Logs folder for aio-run-detached
+logs
+
+# Extracted locales
+extracted
+
+# Amazon Sales Channels
+/actions
+docs/scripts
